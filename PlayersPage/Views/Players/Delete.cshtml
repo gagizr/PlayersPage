@@ -1,0 +1,63 @@
+﻿@model PlayersPage.Models.Player
+
+@{
+    ViewBag.Title = "DeleteModal";
+}
+<div id="target">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Form Modal</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <h4>Player</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+    <div class="modal-footer">
+      @*@Ajax.ActionLink("Delete", "Players", new AjaxOptions() { UpdateTargetId = "target", InsertionMode = InsertionMode.Replace, OnSuccess = "$('#target').modal('hide');" })*@
+
+        @using (@Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <button id="submitBtn" type="submit" value="Delete" class="btn btn-danger btn-sm" onsubmit="close">Delete</button>
+                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
+            </div>
+
+
+        }
+
+
+
+    </div>
+</div>
